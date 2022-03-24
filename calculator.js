@@ -42,3 +42,22 @@ function operate(operator, num1, num2) {
     }
     return result;
 }
+
+const buttons = document.querySelectorAll('button');
+const displayInput = document.querySelector('.display-input');
+
+
+function populateDisplay(e) {
+    if(e.target.textContent !== "CLEAR" && e.target.textContent !== "DELETE" && e.target.textContent !== "=") {
+        console.log(e.target.textContent);
+        displayInput.textContent = e.target.textContent;
+    } else if(e.target.textContent === "CLEAR") {
+        displayInput.textContent = 0;
+    }
+    
+
+}
+
+buttons.forEach(button => button.addEventListener('click', populateDisplay));
+
+
