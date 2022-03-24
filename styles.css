@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #2d302e;
+    padding: 20px;
+    width: 400px;
+    /* height: 550px; */
+    border-radius: 10px;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua;   */
+}
+
+.display {
+    background-color: #8f8f8f;
+    box-shadow: 3px 3px 6px black inset, -3px -3px 6px black inset;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons .row1,
+.buttons .row2,
+.buttons .row3,
+.buttons .row4,
+.buttons .row5 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #8f8f8f;
+    color: white;
+    box-shadow: 5px 5px 15px black;
+    flex-grow: 1;
+    width: 20px;
+    padding: 15px;
+    margin: 5px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+.clear:hover, .delete:hover {
+    background: #f55b49;
+    color: black;
+}
+
+.one:hover, .two:hover, .three:hover, .four:hover,
+.five:hover, .six:hover, .seven:hover, .eight:hover,
+.nine:hover, .zero:hover, .decimal:hover {
+    background: #cfd1cf;
+    color: black;
+}
+
+.divide:hover, .multiply:hover, .add:hover, .substract:hover {
+    background: #52f2fa;
+    color: black;
+}
+
+.equals:hover {
+    background: #1cff73;
+    color: black;
+}
