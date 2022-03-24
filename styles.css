@@ -40,7 +40,12 @@ body {
 }
 
 .display-output {
+    display: flex;
     flex-grow: 2;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .buttons {
