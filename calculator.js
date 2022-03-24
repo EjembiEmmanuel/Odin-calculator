@@ -52,13 +52,11 @@ const buttons = document.querySelectorAll('button');
 const displayInput = document.querySelector('.display-input');
 const displayOutput = document.querySelector('.display-output');
 
-let firstNumber = "";
-let secondNumber = "";
 let operator = "";
 let input = ""
-let result = 0;
+let numbers = [];
+let answer;
 
-displayOutput.textContent = result;
 
 function populateDisplay(e) {
     if(e.target.textContent !== "CLEAR" && e.target.textContent !== "DELETE" && e.target.textContent !== "=") {
@@ -68,13 +66,27 @@ function populateDisplay(e) {
             input += " " + e.target.textContent + " ";
             operator = e.target.textContent;
         }
-    } else if("=".includes(e.target.textContent)) {
-        result = operate(operator, firstNumber, secondNumber);
-        displayOutput.textContent = result;
-
     } else if(e.target.textContent === "DELETE") {
         input = input.slice(0, -1);
         displayInput.textContent = input;
+
+    } else if("=".includes(e.target.textContent)) {
+        numbers = input.split(" ");
+
+        let firstOperand = parseInt(numbers[0]);
+        let currentOperand = "";
+        let symbol;
+        let answer;
+        
+        for(let i = 1; i < numbers.length; i++) {
+            if("+-/*".includes(numbers[i])) {
+                symbol = numbers[i];
+                currentOperand = parseInt(numbers[i + 1])
+                answer = operate(symbol, firstOperand, currentOperand);
+            }
+            firstOperand = answer;
+        }
+        displayOutput.textContent = answer;
 
     } else if(e.target.textContent === "CLEAR") {
         firstNumber = "";
@@ -83,18 +95,10 @@ function populateDisplay(e) {
         result = 0;
         displayInput.textContent = "";
         displayOutput.textContent = result;
-    } 
+    }   
 
     displayInput.textContent = input;
-    let numbers = input.split(" ");
-
-    if(numbers[0] % 1 == 0 || numbers[2] % 1 == 0) {
-        firstNumber = parseInt(numbers[0]);
-        secondNumber = parseInt(numbers[2]);
-    } else {
-        firstNumber = parseFloat(numbers[0]);
-        secondNumber = parseFloat(numbers[2]);
-    }
+    
 }
 
 buttons.forEach(button => button.addEventListener('click', populateDisplay));
