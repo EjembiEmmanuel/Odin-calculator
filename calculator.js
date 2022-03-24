@@ -81,7 +81,15 @@ function populateDisplay(e) {
         for(let i = 1; i < numbers.length; i++) {
             if("+-/*".includes(numbers[i])) {
                 symbol = numbers[i];
-                currentOperand = parseInt(numbers[i + 1])
+                
+                currentOperand = numbers[i + 1];
+                if(currentOperand % 1 != 0 || firstOperand % 1 != 0) {
+                    firstOperand = parseFloat(firstOperand);
+                    currentOperand = parseFloat(currentOperand);
+                } else {
+                    firstOperand = parseInt(firstOperand);
+                    currentOperand = parseInt(currentOperand);
+                }
                 answer = operate(symbol, firstOperand, currentOperand);
             }
             firstOperand = answer;
